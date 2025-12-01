@@ -3,145 +3,393 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mentoria de Tomates Hidropônicos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Mentoria Exclusiva - Tomates Hidropônicos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
-      color: #222;
+      box-sizing: border-box;
     }
-    header {
-      background: linear-gradient(135deg, #2e7d32, #4caf50);
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    
+    .urgency-bar {
+      background: linear-gradient(90deg, #d32f2f, #f44336);
       color: white;
-      padding: 60px 20px;
+      padding: 12px 20px;
       text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      animation: pulse 2s infinite;
     }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.9; }
+    }
+    
+    header {
+      background: linear-gradient(135deg, #1b5e20, #2e7d32, #43a047);
+      color: white;
+      padding: 80px 20px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.3;
+    }
+    
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
+      margin-bottom: 15px;
+      font-weight: 800;
+      position: relative;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    header .subtitle {
+      font-size: 1.3rem;
       margin-bottom: 10px;
-      font-weight: 700;
+      font-weight: 300;
+      position: relative;
     }
-    header p {
+    
+    .highlight {
+      background: rgba(255,193,7,0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    
+    .cta-primary {
+      display: inline-block;
+      background: #ff5722;
+      color: white;
+      padding: 18px 45px;
+      border-radius: 50px;
+      text-decoration: none;
       font-size: 1.2rem;
-      margin-top: 0;
+      font-weight: 700;
+      margin-top: 30px;
+      box-shadow: 0 8px 25px rgba(255,87,34,0.4);
+      transition: all 0.3s ease;
+      position: relative;
     }
+    
+    .cta-primary:hover {
+      background: #e64a19;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255,87,34,0.5);
+    }
+    
     .section {
-      padding: 50px 20px;
-      max-width: 900px;
+      padding: 70px 20px;
+      max-width: 1100px;
       margin: 0 auto;
     }
-    .cta-button {
-      display: inline-block;
-      background: #2e7d32;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-top: 30px;
+    
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #1b5e20;
+      text-align: center;
+      font-weight: 700;
     }
-    .cta-button:hover {
-      background: #e5533c;
+    
+    .section-intro {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #555;
+      max-width: 750px;
+      margin: 0 auto 50px;
     }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+      text-align: center;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #2e7d32;
+      display: block;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 5px;
+    }
+    
     .benefits {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
     }
+    
     .card {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid #2e7d32;
     }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
     .card h3 {
-      margin-top: 0;
+      margin-bottom: 15px;
+      color: #1b5e20;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    
+    .card p {
+      color: #555;
+      line-height: 1.7;
+    }
+    
+    .testimonial-section {
+      background: linear-gradient(135deg, #f5f5f5, #e8f5e9);
+      padding: 70px 20px;
+    }
+    
+    .testimonial {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 800px;
+      margin: 30px auto;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      font-style: italic;
+      color: #444;
+      border-left: 5px solid #2e7d32;
+    }
+    
+    .testimonial-author {
+      margin-top: 20px;
+      font-style: normal;
+      font-weight: 600;
       color: #2e7d32;
     }
+    
+    .scarcity-box {
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      border: 3px solid #ff9800;
+      border-radius: 15px;
+      padding: 40px;
+      text-align: center;
+      margin: 50px auto;
+      max-width: 700px;
+      box-shadow: 0 8px 25px rgba(255,152,0,0.2);
+    }
+    
+    .scarcity-box h3 {
+      color: #e65100;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+    
+    .scarcity-box p {
+      font-size: 1.15rem;
+      color: #333;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+    
+    .spots-remaining {
+      background: #ff5722;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    
+    .guarantee {
+      background: #e8f5e9;
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: 50px auto;
+      text-align: center;
+      border: 2px dashed #2e7d32;
+    }
+    
+    .guarantee h3 {
+      color: #1b5e20;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    
     footer {
       text-align: center;
-      padding: 30px;
-      background: #222;
-      color: #fff;
-      margin-top: 40px;
+      padding: 40px 20px;
+      background: #1a1a1a;
+      color: #999;
+      margin-top: 60px;
       font-size: 0.9rem;
+    }
+    
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="urgency-bar">
+    ⚠️ ATENÇÃO: Últimas 7 vagas disponíveis para esta turma | Encerramento em 48 horas
+  </div>
+
   <header>
-    <h1>Mentoria de Plantio de Tomates Hidropônicos</h1>
-    <p>Aprenda a cultivar tomates de alta qualidade, com produção contínua e sem depender da terra.</p>
-    <a href="#inscricao" class="cta-button">Quero Me Inscrever</a>
+    <h1>Mentoria Exclusiva de Tomates Hidropônicos</h1>
+    <p class="subtitle">Transforme seu cultivo em um <span class="highlight">negócio lucrativo</span> com produção contínua e alta qualidade</p>
+    <a href="https://wa.me/5511999664054?text=Quero%20garantir%20minha%20vaga%20na%20mentoria%20de%20tomates%20hidrop%C3%B4nicos" class="cta-primary">🚀 Garantir Minha Vaga Agora</a>
   </header>
 
   <section class="section">
-    <h2>O que você vai aprender</h2>
-    <div class="benefits">
-      <div class="card">
-        <h3>✔ Montagem do Sistema</h3>
-        <p>Aprenda a estruturar corretamente sua bancada hidropônica para máxima eficiência.</p>
+    <div class="stats">
+      <div class="stat-card">
+        <span class="stat-number">300%</span>
+        <span class="stat-label">Maior produtividade vs. cultivo tradicional</span>
       </div>
-      <div class="card">
-        <h3>✔ Nutrição e Soluções</h3>
-        <p>Domine a preparação das soluções nutritivas ideais para tomates.</p>
+      <div class="stat-card">
+        <span class="stat-number">90%</span>
+        <span class="stat-label">Economia de água</span>
       </div>
-      <div class="card">
-        <h3>✔ Manejo e Crescimento</h3>
-        <p>Descubra como conduzir o crescimento saudável das plantas e aumentar sua produtividade.</p>
-      </div>
-      <div class="card">
-        <h3>✔ Controle de Pragas</h3>
-        <p>Aprenda técnicas simples e eficazes para manter sua plantação livre de pragas.</p>
+      <div class="stat-card">
+        <span class="stat-number">12 meses</span>
+        <span class="stat-label">Produção contínua no ano</span>
       </div>
     </div>
   </section>
 
-  <section class="section" id="inscricao">
-    <h2>Participe da Mentoria</h2>
-    <p>As vagas são limitadas! Garanta sua participação e aprenda diretamente com quem já domina o cultivo hidropônico.</p>
-    <a href="https://wa.me/5511999664054?text=Quero%20me%20inscrever%20na%20mentoria%20de%20tomates%20hidrop%C3%B4nicos" class="cta-button">Falar no WhatsApp</a>
-  </section>
-
-  <footer>
-    © 2025 BRY-Business – Todos os direitos reservados
-  </footer>
-</body>
-</html>
-que você vai aprender</h2>
+  <section class="section">
+    <h2>O Que Você Vai Dominar</h2>
+    <p class="section-intro">Um método completo e testado para você produzir tomates de alta qualidade, independente do espaço disponível</p>
+    
     <div class="benefits">
       <div class="card">
-        <h3>✔ Montagem do Sistema</h3>
-        <p>Aprenda a estruturar corretamente sua bancada hidropônica para máxima eficiência.</p>
+        <span class="icon">🏗️</span>
+        <h3>Sistema Hidropônico Completo</h3>
+        <p>Aprenda a montar sua estrutura do zero, com todas as especificações técnicas e materiais necessários para começar imediatamente.</p>
       </div>
+      
       <div class="card">
-        <h3>✔ Nutrição e Soluções</h3>
-        <p>Domine a preparação das soluções nutritivas ideais para tomates.</p>
+        <span class="icon">🧪</span>
+        <h3>Formulação de Soluções Nutritivas</h3>
+        <p>Domine as fórmulas exatas e o manejo de nutrientes para tomates em cada fase de desenvolvimento, garantindo crescimento acelerado.</p>
       </div>
+      
       <div class="card">
-        <h3>✔ Manejo e Crescimento</h3>
-        <p>Descubra como conduzir o crescimento saudável das plantas e aumentar sua produtividade.</p>
+        <span class="icon">🌱</span>
+        <h3>Manejo Profissional das Plantas</h3>
+        <p>Técnicas de poda, condução, tutoramento e manejo que multiplicam sua produtividade e qualidade dos frutos.</p>
       </div>
+      
       <div class="card">
-        <h3>✔ Controle de Pragas</h3>
-        <p>Aprenda técnicas simples e eficazes para manter sua plantação livre de pragas.</p>
+        <span class="icon">🛡️</span>
+        <h3>Controle Integrado de Pragas</h3>
+        <p>Protocolos preventivos e curativos para manter seu cultivo sempre saudável, sem uso excessivo de defensivos.</p>
+      </div>
+      
+      <div class="card">
+        <span class="icon">📊</span>
+        <h3>Gestão e Rentabilidade</h3>
+        <p>Calcule custos, precifique corretamente e entenda como tornar seu cultivo hidropônico um negócio lucrativo.</p>
+      </div>
+      
+      <div class="card">
+        <span class="icon">💡</span>
+        <h3>Suporte Exclusivo</h3>
+        <p>Acesso direto ao mentor para tirar dúvidas e receber orientações personalizadas durante toda a mentoria.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" id="inscricao">
-    <h2>Participe da Mentoria</h2>
-    <p>As vagas são limitadas! Garanta sua participação e aprenda diretamente com quem já domina o cultivo hidropônico.</p>
-    <a href="#" class="cta-button">Garantir Minha Vaga</a>
+  <div class="testimonial-section">
+    <section class="section">
+      <h2>O Que Nossos Alunos Dizem</h2>
+      <div class="testimonial">
+        "Depois da mentoria, minha produção triplicou e consegui fornecer para 3 restaurantes da região. O investimento se pagou em menos de 4 meses!"
+        <div class="testimonial-author">— Carlos M., produtor em São Paulo</div>
+      </div>
+      <div class="testimonial">
+        "Nunca tinha trabalhado com hidroponia. Com o método ensinado, montei meu sistema em 2 semanas e já estou colhendo tomates incríveis!"
+        <div class="testimonial-author">— Ana Paula S., iniciante em Minas Gerais</div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section">
+    <div class="scarcity-box">
+      <div class="spots-remaining">⏰ APENAS 7 VAGAS RESTANTES</div>
+      <h3>Esta é Sua Única Chance</h3>
+      <p>Trabalhamos com turmas reduzidas para garantir atenção individualizada a cada aluno. A próxima turma só abre em 4 meses.</p>
+      <p><strong>Não perca esta oportunidade de transformar seu cultivo!</strong></p>
+      <a href="https://wa.me/5511999664054?text=Quero%20garantir%20minha%20vaga%20na%20mentoria%20de%20tomates%20hidrop%C3%B4nicos" class="cta-primary">Quero Garantir Minha Vaga</a>
+    </div>
+
+    <div class="guarantee">
+      <h3>✅ Garantia de Satisfação</h3>
+      <p>Se nos primeiros 7 dias você sentir que a mentoria não é para você, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
+    </div>
   </section>
 
   <footer>
-    © 2025 Mentoria Tomates Hidropônicos – Todos os direitos reservados
+    © 2025 BRY-Business – Todos os direitos reservados<br>
+    Mentoria exclusiva com vagas limitadas por turma
   </footer>
 </body>
 </html>
